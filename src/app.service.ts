@@ -22,7 +22,7 @@ export class AppService {
   > {
     return new Promise(async (resolve, reject) => {
       //cq9ugdpr01qi4425gk6gcq9ugdpr01qi4425gk70
-      const apiKey = 'Z0HCOII2M54U7EDT'; //'Y6X43U1JBK4E7H8J';
+      const apiKey = 'Y6X43U1JBK4E7H8J'; //'Z0HCOII2M54U7EDT';
       const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
 
       const data = await lastValueFrom(
