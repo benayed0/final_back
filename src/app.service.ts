@@ -28,15 +28,18 @@ export class AppService {
       const data = await lastValueFrom(
         this.httpService.get(url).pipe(map((response) => response.data)),
       );
-      if (data['Information']) {
+
+      if (data['Information'] || data['Error Message']) {
         switch (symbol) {
           case 'AAPL':
             resolve(APPL);
             break;
           case 'NKE':
             resolve(NKE);
+            break;
           case 'SBUX':
             resolve(SBUX);
+            break;
           default:
             resolve([]);
             break;
