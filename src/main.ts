@@ -4,17 +4,14 @@ const fs = require('fs');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const allowedOrigins = 'https://final-front-two.vercel.app';
-  // [
-  //   'http://localhost:4200',
-  // ]; //configService.get<string>('ALLOWED_ORIGINS').split(',');
+  const allowedOrigins = process.env.FRONT_URL;
 
   app.enableCors({
     origin: allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 }
 
 bootstrap();

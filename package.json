@@ -17,11 +17,14 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "local": "echo 'Running local setups' && sleep 5 && echo 'Running tests for NextJS project (back)' && sleep 2 && jest && echo 'Building and Starting Container' && sleep 2 && docker-compose up -d --build",
+    "distant": "echo 'Running local setups' && sleep 5 && echo 'Checking if deployed environment variables are coherent' && sleep 2 && node verify_env.js && echo 'Deploying to Vercel' && sleep 2 && vercel --prod"
   },
   "dependencies": {
     "@nestjs/axios": "^3.0.2",
     "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^10.0.0",
     "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.0.0",

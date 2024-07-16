@@ -6,7 +6,7 @@ services:
       - .:/app
       - /app/node_modules
     ports:
-      - ${APP_PORT}:${APP_PORT}
+      - ${PORT}:${PORT}
     command: npm run start:dev
     env_file:
       - .env
