@@ -20,7 +20,11 @@ try {
     }
   });
 } catch (error) {
-  console.error('Error fetching Vercel environment variables:', error.message);
+  console.error(
+    '\x1b[31m',
+    'Error fetching Vercel environment variables:',
+    error.message,
+  );
   process.exit(1);
 }
 
@@ -28,16 +32,19 @@ try {
 const localKeys = Object.keys(localEnv);
 for (const localkey of localKeys) {
   if (!vercelKeys.includes(localkey)) {
-    console.log('Variables missing in Vercel project:', localkey);
+    console.log('\x1b[31m', 'Variables missing in Vercel project:', localkey);
+    process.exit(1);
     return;
   }
 }
 for (const vericelkey of vercelKeys) {
   if (!localKeys.includes(vericelkey)) {
-    console.log('Variables missing in local project:', vericelkey);
+    console.log('\x1b[31m', 'Variables missing in local project:', vericelkey);
+    process.exit(1);
     return;
   }
 }
 console.log(
+  '\x1b[32m',
   'Local .env file of NextJS project (back) is conform to the deployed Vercel project and vice-versa.',
 );

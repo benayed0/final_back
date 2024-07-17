@@ -5,6 +5,7 @@ const fs = require('fs');
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const allowedOrigins = process.env.FRONT_URL;
+  console.log(allowedOrigins);
 
   app.enableCors({
     origin: allowedOrigins,
